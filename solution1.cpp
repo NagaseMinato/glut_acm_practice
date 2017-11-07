@@ -110,10 +110,17 @@ int ExprCalculator::work(){
 int main(){
 	//this stupid calcuator do not support ANY COMPUATION MORE THAN ONE SINGLE INTEGER AND NEGATIVE INTEGER;
 	std::string expr("3+2-5#");
-	ExprCalculator calcuator(expr);
-	assert(calcuator.work() == 0);
-	assert(calcuator.setNewExpression("3+2-9#").work()==-4);
-	assert(calcuator.setNewExpression("(3*2)-9#").work()==-3);
-	assert(calcuator.setNewExpression("(3*2)-(5*1)#").work()==1);
+	
+	//assert(calcuator.work() == 0);
+	//assert(calcuator.setNewExpression("3+2-9#").work()==-4);
+	//assert(calcuator.setNewExpression("(3*2)-9#").work()==-3);
+	//assert(calcuator.setNewExpression("(3*2)-(5*1)#").work()==1);
+	std::string str;
+	std::getline(std::cin,str);
+	while(str!="#"){
+		ExprCalculator calcuator(str);
+		std::cout<<"the result of expression "<<str<<" is "<<calcuator.work()<<"\n";
+		std::getline(std::cin,str);
+	}
 	return 0;
 }
