@@ -222,16 +222,17 @@ Usage for linux:
 1. 基于栈的简易计算
 ![](public/s1.png)
 2. 约瑟夫环问题
-
-
+![](public/s2.png)
 3. 字符串和数值计算
-
+![](public/s6.png)
 4. 贪心算法
-
+![](public/s4.png)
 5. 智力游戏
-
+![](public/s5.png)
 6. 回溯法
-
+![](public/8queen1.png)
 7. POJ字符串排序变个花样
-
+![](public/POJ1007.png)
 8. POJ回文字 POJ WERTY,POJ 特殊温度表示计算
+![](public/POJ1590.png)
+![](public/POJ2538.png)
