@@ -219,14 +219,15 @@ private implementation:
 Prerequisite:
 + make 工具
 + g++ version >= 4.8.4
-+ git 
++ git
 
 Usage for linux:
 ```shell
 ~$ git clone https://github.com/NagaseMinato/glut_acm_practice.git
 ~$ cd glut_acm_practice
 ~$ make
-~$ #make clean
+~$ cd bin
+~$ ./solution1# try to run a built program
 ```
 ## 6.测试结果
 1. 基于栈的简易计算
