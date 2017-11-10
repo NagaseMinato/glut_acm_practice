@@ -24,6 +24,8 @@
 > 字符串操作和简易计算，根据要求输出格式化的结果
 9. 递归
 > 有一长度为N(1<=Ｎ<=10)的地板，给定两种不同瓷砖：一种长度为1，另一种长度为2，数目不限。要将这个长度为N的地板铺满
+10. DFS
+> Due to recent rains, water has pooled in various places in Farmer John's field, which is represented by a rectangle of N x M (1 <= N <= 100; 1 <= M <= 100) squares. Each square contains either water ('W') or dry land ('.')
 
 ## 2.需求分析
 1. 输入一串表达式，程序计算出表达式的结果
@@ -35,6 +37,7 @@
 7. 输入N个M长度的DNA序列字符，输出从最无序到最有序的字符串，注意该序列是题目指定的inversion number排序
 8. 输入N个字符串，输出字符串是否为回文字符串;对字符串进行操作和根据题目进行计算
 9. 输入N，使用两次递归计算即可
+10. 输入水塘矩阵，如果为'W'则深度搜索周围方块直到访问完周围所有'W'
 
 ## 3.概要设计
 1. 基于栈的简易计算
@@ -109,6 +112,14 @@ public interface:
     //@return int 特殊排序值
     int inversionNumber(const std::string & str)
 
+```
+6. DFS
+```cpp
+public interface:
+    //@summary 深度优先搜索
+    //@param x,y 当前搜索的点
+    //@return none
+    void dfs(int x, int y);
 ```
 
 ## 4.详细设计
