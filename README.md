@@ -236,7 +236,7 @@ Usage for linux:
 ```shell
 ~$ git clone https://github.com/NagaseMinato/glut_acm_practice.git
 ~$ cd glut_acm_practice
-~$ make
+~$ make -j8
 ~$ cd bin
 ~$ ./solution1# try to run a built program
 ```
