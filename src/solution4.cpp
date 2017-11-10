@@ -21,7 +21,7 @@ int main() {
         int consumption = 0;
         for (std::map<int, int>::reverse_iterator p = coin.rbegin(); p != coin.rend(); p++) {
             int n = std::min(m / p->first, p->second);
-            m -= n * p->first;
+            m -= (n * p->first);
             consumption += n;
         }
         if(m>0){
