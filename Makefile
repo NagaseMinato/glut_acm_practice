@@ -1,5 +1,5 @@
 GCC_FLAG = -std=c++11 -O3  -Wall -pedantic
-ALL_PROGRAMS = solution1 solution2 solution4 solution5 solution6 solution8 poj1007 poj1590 poj2538 poj2386 poj3278 poj3299bad 8queen
+ALL_PROGRAMS = solution1 solution2 solution4 solution5 solution6 solution8 poj1007 poj1590 poj2538 poj2386 poj3278 poj3299bad 8queen solution3 
 
 all: $(ALL_PROGRAMS)
 
@@ -29,5 +29,7 @@ poj3299bad:
 	g++ $(GCC_FLAG) src/poj3299_WA.cpp -o bin/$@
 8queen:
 	g++ $(GCC_FLAG) src/8queen.cpp -o bin/$@
+solution3:
+	g++ $(GCC_FLAG) src/solution3.cpp -o bin/$@
 clean:
 	cd bin;rm $(ALL_PROGRAMS);
