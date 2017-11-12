@@ -40,8 +40,10 @@
 8. 输入N个字符串，输出字符串是否为回文字符串;对字符串进行操作和根据题目进行计算
 9. 输入N，使用两次递归计算即可
 10. 输入水塘矩阵，如果为'W'则深度搜索周围方块直到访问完周围所有'W'
+11. 输入农夫和牛的一维坐标，从农夫位置开始广度优先搜索，向左向右或者两倍向左向右知道找到牛的位置，搜索结束
 
 ## 3.概要设计
+需要注意，以下并非真正意义的公有接口，只是为了说明程序设计概要而放诸此地
 1. 基于栈的简易计算
 ```cpp
 public interface:
@@ -122,6 +124,14 @@ public interface:
     //@param x,y 当前搜索的点
     //@return none
     void dfs(int x, int y);
+```
+7. BFS
+```
+public interface:
+    //@summary 广度优先搜索
+    //@param n,k n为农夫的位置，k为牛的位置
+    //@return int 返回农夫到牛需要走的步数
+    int bfs(int n,int k);
 ```
 
 ## 4.详细设计
@@ -228,6 +238,30 @@ private implementation:
     //@return none
     void pave(int n)
 ```
+10. 主函数接受农夫和牛的一维坐标输入，bfs()函数首先创建队列并将农夫位置放入队列，然后四种走法逐一判读如果到达牛的位置在则终止搜索，返回
+```cpp
+pseoducode:
+    queue<position,step> q;
+    res = 0
+    while !q.empty():
+        front = q.pop();
+        if front == cow position:
+            res = front.step
+            break
+        
+        if front.position +1 not visited
+            set to visited
+            q.push(front.position+1,front.step+1)
+        if front.position -1 not visited
+            set to visited
+            q.push(front.position+1,front.step+1)
+        if front.position *2 not visited
+            set to visited
+            q.push(front.position+1,front.step+1)
+
+    return res
+```
+
 ## 5.使用说明
 Prerequisite:
 + make 工具
