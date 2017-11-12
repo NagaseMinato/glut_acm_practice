@@ -26,6 +26,8 @@
 > 有一长度为N(1<=Ｎ<=10)的地板，给定两种不同瓷砖：一种长度为1，另一种长度为2，数目不限。要将这个长度为N的地板铺满
 10. DFS
 > Due to recent rains, water has pooled in various places in Farmer John's field, which is represented by a rectangle of N x M (1 <= N <= 100; 1 <= M <= 100) squares. Each square contains either water ('W') or dry land ('.')
+11. BFS
+> Farmer John has been informed of the location of a fugitive cow and wants to catch her immediately. He starts at a point N (0 ≤ N ≤ 100,000) on a number line and the cow is at a point K (0 ≤ K ≤ 100,000) on the same number line. Farmer John has two modes of transportation: walking and teleporting.
 
 ## 2.需求分析
 1. 输入一串表达式，程序计算出表达式的结果
@@ -260,3 +262,5 @@ Usage for linux:
 ![](public/POJ2538.png)
 9. 递归
 ![](public/s8.png)
+10. BFS
+![](public/POJ3278.png)
