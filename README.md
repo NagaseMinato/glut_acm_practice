@@ -3,7 +3,6 @@
 ## 2016级计算机6班 2017年11月6日
 ## 姓名：杨易 学号：3162052051639
 
-
 ## 1.实验题目
 1. 基于栈的简易计算
 > 一个算式的求值：求一个可能包含加、减、乘、除运算的中缀表达式的值。
@@ -17,7 +16,7 @@
 > 蛇形矩阵是由1开始的自然数依次排列成的一个矩阵上三角形。5. 数字字符串处理
 >  输出7 和7 的倍数，还有包含7 的数字例如（17，27，37...70，71，72，73...）
 6. 回溯法
-> 经典八皇后问题
+> 经典算法-八皇后问题
 7. POJ字符串排序变个花样
 >  DNA排序
 8. POJ回文字 POJ WERTY,POJ 特殊温度表示计算
@@ -28,6 +27,7 @@
 > Due to recent rains, water has pooled in various places in Farmer John's field, which is represented by a rectangle of N x M (1 <= N <= 100; 1 <= M <= 100) squares. Each square contains either water ('W') or dry land ('.')
 11. BFS
 > Farmer John has been informed of the location of a fugitive cow and wants to catch her immediately. He starts at a point N (0 ≤ N ≤ 100,000) on a number line and the cow is at a point K (0 ≤ K ≤ 100,000) on the same number line. Farmer John has two modes of transportation: walking and teleporting.
+12. 经典算法-01背包
 
 ## 2.需求分析
 1. 输入一串表达式，程序计算出表达式的结果
@@ -41,6 +41,7 @@
 9. 输入N，使用两次递归计算即可
 10. 输入水塘矩阵，如果为'W'则深度搜索周围方块直到访问完周围所有'W'
 11. 输入农夫和牛的一维坐标，从农夫位置开始广度优先搜索，向左向右或者两倍向左向右知道找到牛的位置，搜索结束
+12. 输入物品数量N，下面N-1为物品重量-价值对，输入背包大小，输出该背包能容纳的物品的最大价值
 
 ## 3.概要设计
 需要注意，以下并非真正意义的公有接口，只是为了说明程序设计概要而放诸此地
@@ -267,14 +268,17 @@ Prerequisite:
 + make 工具
 + g++ version >= 4.8.4
 + git
++ python>=3.0(optional)
 
 Usage for linux:
 ```shell
 ~$ git clone https://github.com/NagaseMinato/glut_acm_practice.git
 ~$ cd glut_acm_practice
+~$ python build.py
 ~$ make -j8
 ~$ cd bin
-~$ ./solution1# try to run a built program
+~$ ./solution1 # try to run a built program
+~$ cd .. && make clean # clean binary programs 
 ```
 ## 6.测试结果
 1. 基于栈的简易计算
@@ -298,3 +302,5 @@ Usage for linux:
 ![](public/s8.png)
 10. BFS
 ![](public/POJ3278.png)
+11. 01背包v1.0
+![](public/01pack_v1.png)

@@ -4,8 +4,8 @@
 
 int inversionNumber(const std::string & str) {
     int res = 0;
-    for (int i = 0; i < str.size(); i++) {
-        for (int k = i + 1; k < str.size(); k++) {
+    for (size_t i = 0; i < str.size(); i++) {
+        for (size_t k = i + 1; k < str.size(); k++) {
             if (str[i] > str[k]) {
                 res++;
             }

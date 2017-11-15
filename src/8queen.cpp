@@ -26,7 +26,7 @@ int tempRow[8] = { 0 };
 void genQueen(int i) {
     if (i == 8) {
         queenCounter++;
-        for (size_t x = 0; x < 8; x++) {
+        for (int x = 0; x < 8; x++) {
             queen[queenCounter][x] = tempRow[x];
         }
     }
@@ -51,8 +51,8 @@ int main() {
     genQueen(0);
     std::cout << "there are " << queenCounter 
         << " solutions of 8-queen problem\n" << "they are as follows:\n";
-    for (size_t i = 0; i < queenCounter; i++) {
-        for (size_t k = 0; k < 8; k++){
+    for (int i = 0; i < queenCounter; i++) {
+        for (int k = 0; k < 8; k++){
             std::cout << queen[i][k] << " ";
         }
         std::cout << "\n";
