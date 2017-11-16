@@ -132,7 +132,7 @@ public interface:
     void dfs(int x, int y);
 ```
 7. BFS
-```
+```cpp
 public interface:
     //@summary 广度优先搜索
     //@param n,k n为农夫的位置，k为牛的位置
@@ -140,7 +140,7 @@ public interface:
     int bfs(int n,int k);
 ```
 8. 分数加减法
-```
+```cpp
 public interface:
     // @summary 计算 a op b
     // @param int a 
