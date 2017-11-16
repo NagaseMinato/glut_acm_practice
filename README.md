@@ -28,6 +28,8 @@
 11. BFS
 > Farmer John has been informed of the location of a fugitive cow and wants to catch her immediately. He starts at a point N (0 ≤ N ≤ 100,000) on a number line and the cow is at a point K (0 ≤ K ≤ 100,000) on the same number line. Farmer John has two modes of transportation: walking and teleporting.
 12. 经典算法-01背包
+13. POJ分数加减法
+> 编写一个C程序，实现两个分数的加减法
 
 ## 2.需求分析
 1. 输入一串表达式，程序计算出表达式的结果
@@ -42,6 +44,7 @@
 10. 输入水塘矩阵，如果为'W'则深度搜索周围方块直到访问完周围所有'W'
 11. 输入农夫和牛的一维坐标，从农夫位置开始广度优先搜索，向左向右或者两倍向左向右知道找到牛的位置，搜索结束
 12. 输入物品数量N，下面N-1为物品重量-价值对，输入背包大小，输出该背包能容纳的物品的最大价值
+13. 输入包含多行数据。每行数据是一个字符串，格式是"a/boc/d"。 。其中a, b, c, d是一个0-9的整数。o是运算符"+"或者"-"。数据以EOF结束 
 
 ## 3.概要设计
 需要注意，以下并非真正意义的公有接口，只是为了说明程序设计概要而放诸此地
@@ -134,7 +137,34 @@ public interface:
     //@return int 返回农夫到牛需要走的步数
     int bfs(int n,int k);
 ```
+8. 分数加减法
+```
+public interface:
+    // @summary 计算 a op b
+    // @param int a 
+    // @param int b
+    // @return int 返回a op b
+    int doComputing(int a, int b, char op);
 
+    // @summary 给出两个数，寻找这两个数的最大公因数
+    // @param int a 数A
+    // @param int b 数B
+    // @return int A和B的最大公因数
+    int findGreatestCommonFactor(int a, int b);
+
+    // @summary 将分数转化为以最大公因数为底的分数形式
+    // @param int a 分子
+    // @param int b 分母
+    // @param int greatestCommonFactor 最大公因数
+    // @return pair<int,int> 以最大公因数为底的分数
+    std::pair<int, int> transformFraction(int a, int b, int greastestCommonFactor);
+
+    // @summary 返回a/b化简后的记过
+    // @param int 分子
+    // @param int 分母
+    // @return pair<int,int> 化简后的a/b
+    std::pair<int,int> simplifyFraction(int a, int b);
+```
 ## 4.详细设计
 1. 使用两个栈分别存储数字和运算符，遇到左括号入栈，遇到运算符判断如果该运算符优先级大于栈顶则入栈，否则操作数出栈并与运算符一起参与计算，计算结果入栈。遇到右括号持续上述步骤直到栈顶元素为'('。
     注意该程序不支持一位以上的数字计算以及负数计算
@@ -262,6 +292,23 @@ pseoducode:
 
     return res
 ```
+11. 循环读取用户输入，直到EOF停止。首先使用parseNumberFrom()函数解析字符串，然后使用transformFraction()转化为pair对表示分数，最后simplifyFraction()化简分数计算后的最终结果。该题主要复杂度（代码）体现在parseNUmberFrom()
+```
+pseudocode:
+    while !cin.eof():
+        numbers[] = parseNumberFrom(UserInput)
+        fraction1 = transform(numbers1,numbers2)
+        fraction2 = transform(numbers3,numbers4)
+        resultFraction = fraction1 ['+'|'-'] fraction2
+        
+        if(resultFraction<0){
+            print '-'.result.'\n'
+        }else if(resultFraction>0){
+            print result.'\n'
+        }else{
+            print '0'.'\n'
+        }
+```
 
 ## 5.使用说明
 Prerequisite:
@@ -304,3 +351,5 @@ Usage for linux:
 ![](public/POJ3278.png)
 11. 01背包v1.0
 ![](public/01pack_v1.png)
+12. 分数加减法
+~[](public/POJ3979.png)

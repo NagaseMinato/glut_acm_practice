@@ -13,5 +13,6 @@
     "poj3299bad":"poj3299_WA.cpp",
     "8queen":"8queen.cpp",
     "solution3":"solution3.cpp",
-    "01pack_v1.0":"01pack_v1.0.cpp"
+    "01pack_v1.0":"01pack_v1.0.cpp",
+    "poj3979":"poj_3979_30percentAC.cpp"
 }

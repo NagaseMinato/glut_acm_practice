@@ -1,5 +1,5 @@
 GCC_FLAG = -std=c++11 -O3  -Wall -pedantic
-ALL_PROGRAMS = 8queen poj3299bad poj3278 01pack_v1.0 poj1007 solution6 poj1590 solution4 solution5 solution2 solution3 poj2538 solution1 solution8 poj2386 
+ALL_PROGRAMS = 8queen poj3299bad poj3278 01pack_v1.0 poj1007 solution6 poj1590 solution4 solution5 solution2 solution3 poj2538 solution1 poj3979 solution8 poj2386 
 
 all: $(ALL_PROGRAMS)
 
@@ -29,6 +29,8 @@ poj2538:
 	g++ $(GCC_FLAG) src/poj_2538_47percentAC.cpp -o bin/$@
 solution1:
 	g++ $(GCC_FLAG) src/solution1.cpp -o bin/$@
+poj3979:
+	g++ $(GCC_FLAG) src/poj_3979_30percentAC.cpp -o bin/$@
 solution8:
 	g++ $(GCC_FLAG) src/solution8.cpp -o bin/$@
 poj2386:
