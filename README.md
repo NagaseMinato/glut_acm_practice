@@ -1,7 +1,7 @@
 # 桂林理工大学ACM程序设计实践实习报告
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a76e7d49a43e48678493996cc27ac964)](https://www.codacy.com/app/yangyijk/glut_acm_practice?utm_source=github.com&utm_medium=referral&utm_content=cthulhujk/glut_acm_practice&utm_campaign=badger)
-
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 ## 2016级计算机6班 2017年11月6日
 ## 姓名：杨易 学号：3162052051639
 
