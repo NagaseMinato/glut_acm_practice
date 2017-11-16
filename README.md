@@ -354,4 +354,4 @@ Usage for linux:
 11. 01背包v1.0
 ![](public/01pack_v1.png)
 12. 分数加减法
-~[](public/POJ3979.png)
+![](public/POJ3979.png)
