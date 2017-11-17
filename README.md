@@ -313,21 +313,22 @@ pseudocode:
 ```
 
 ## 5.使用说明
+I have A LOT free time to do uesless work. Obviously this project can easily use g++/clang compiled for all, but I still write a cmake rules to make it more engineered and modernization, and even in previous you could see manual makefile. And this project was licensed under [MIT License](LICENSE), which means you can almost do everyting you want with it. Anyway, I just want to make it more fun :-)
+
 Prerequisite:
-+ make 工具
++ unix make
 + g++ version >= 4.8.4
 + git
-+ python>=3.0(optional)
++ cmake >= 3.5.0
 
-Usage for linux:
+For linux:
 ```shell
-~$ git clone https://github.com/NagaseMinato/glut_acm_practice.git
-~$ cd glut_acm_practice
-~$ python build.py
-~$ make -j8
-~$ cd bin
-~$ ./solution1 # try to run a built program
-~$ cd .. && make clean # clean binary programs 
+$ git clone https://github.com/NagaseMinato/glut_acm_practice.git
+$ cd glut_acm_practice/build
+$ cmake .. -G"Unix Makefiles"
+$ make -j8
+$ ../bin/solution1 # try to run a built program
+$ make clean
 ```
 ## 6.测试结果
 1. 基于栈的简易计算
