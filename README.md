@@ -327,9 +327,11 @@ $ git clone https://github.com/NagaseMinato/glut_acm_practice.git
 $ cd glut_acm_practice/build
 $ cmake .. -G"Unix Makefiles"
 $ make -j8
-$ ../bin/solution1 # try to run a built program
+$ ../bin/solution1  # try to run a built program
+$ make test         # run tests
 $ make clean
 ```
+
 ## 6.测试结果
 1. 基于栈的简易计算
 ![](public/s1.png)
@@ -356,3 +358,51 @@ $ make clean
 ![](public/01pack_v1.png)
 12. 分数加减法
 ![](public/POJ3979.png)
+
+## 7.附录
+> Running tests...
+Test project /home/racaljk/Desktop/glut_acm_practice/build
+      Start  1: test_running__01pack_v1.0
+ 1/16 Test  #1: test_running__01pack_v1.0 ............   Passed    0.01 sec
+      Start  2: test_running__8queen
+ 2/16 Test  #2: test_running__8queen .................   Passed    0.00 sec
+      Start  3: test_running__poj3299_WA
+ 3/16 Test  #3: test_running__poj3299_WA .............   Passed    0.00 sec
+      Start  4: test_running__poj_1007_40percentAC
+ 4/16 Test  #4: test_running__poj_1007_40percentAC ...   Passed    0.01 sec
+      Start  5: test_running__poj_1590_33percentAC
+ 5/16 Test  #5: test_running__poj_1590_33percentAC ...   Passed    0.00 sec
+      Start  6: test_running__poj_2386_49percentAC
+ 6/16 Test  #6: test_running__poj_2386_49percentAC ...   Passed    0.00 sec
+      Start  7: test_running__poj_2538_47percentAC
+ 7/16 Test  #7: test_running__poj_2538_47percentAC ...   Passed    0.00 sec
+      Start  8: test_running__poj_3278_31percentAC
+ 8/16 Test  #8: test_running__poj_3278_31percentAC ...   Passed    0.00 sec
+      Start  9: test_running__poj_3979_30percentAC
+ 9/16 Test  #9: test_running__poj_3979_30percentAC ...***Failed    0.13 sec
+      Start 10: test_running__solution1
+10/16 Test #10: test_running__solution1 ..............   Passed    0.00 sec
+      Start 11: test_running__solution2
+11/16 Test #11: test_running__solution2 ..............   Passed    0.00 sec
+      Start 12: test_running__solution3
+12/16 Test #12: test_running__solution3 ..............   Passed    0.00 sec
+      Start 13: test_running__solution4
+13/16 Test #13: test_running__solution4 ..............   Passed    0.00 sec
+      Start 14: test_running__solution5
+14/16 Test #14: test_running__solution5 ..............   Passed    0.00 sec
+      Start 15: test_running__solution6
+15/16 Test #15: test_running__solution6 ..............   Passed    0.00 sec
+      Start 16: test_running__solution8
+16/16 Test #16: test_running__solution8 ..............   Passed    0.00 sec
+
+94% tests passed, 1 tests failed out of 16
+
+Total Test time (real) =   0.19 sec
+
+The following tests FAILED:
+	  9 - test_running__poj_3979_30percentAC (Failed)
+Errors while running CTest
+Makefile:83: recipe for target 'test' failed
+make: *** [test] Error 8
+
+

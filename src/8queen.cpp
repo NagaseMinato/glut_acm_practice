@@ -57,6 +57,5 @@ int main() {
         }
         std::cout << "\n";
     }
-    getchar();
     return 0;
 }
