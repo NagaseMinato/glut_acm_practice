@@ -360,7 +360,7 @@ $ make clean
 ![](public/POJ3979.png)
 
 ## 7.附录
-> Running tests...
+```python
 Test project /home/racaljk/Desktop/glut_acm_practice/build
       Start  1: test_running__01pack_v1.0
  1/16 Test  #1: test_running__01pack_v1.0 ............   Passed    0.01 sec
@@ -398,11 +398,4 @@ Test project /home/racaljk/Desktop/glut_acm_practice/build
 94% tests passed, 1 tests failed out of 16
 
 Total Test time (real) =   0.19 sec
-
-The following tests FAILED:
-	  9 - test_running__poj_3979_30percentAC (Failed)
-Errors while running CTest
-Makefile:83: recipe for target 'test' failed
-make: *** [test] Error 8
-
-
+```
