@@ -321,7 +321,7 @@ Prerequisite:
 + git
 + cmake >= 3.5.0
 
-For linux:
+For linux users:
 ```shell
 $ git clone https://github.com/NagaseMinato/glut_acm_practice.git
 $ cd glut_acm_practice/build
@@ -336,6 +336,13 @@ $ sudo apt-get install valgrind
 $ make test         # run testsuite
 ```
 
+For windows users:
+```
+> git clone https://github.com/NagaseMinato/glut_acm_practice.git
+> cd glut_acm_practice/build
+> cmake .. -G"Visual Studio 15 2017"
+```
+Then double-click `glut_acm_practice.sln`, select a sub project and build it, enjoy it! 
 
 ## 6.测试结果
 1. 基于栈的简易计算
