@@ -365,6 +365,7 @@ $ make test         # run testsuite
 ![](public/POJ3979.png)
 
 ## 7.附录
++ 测试结果
 ```python
 Test project /home/racaljk/Desktop/glut_acm_practice/build
       Start  1: test_running__01pack_v1.0
@@ -404,3 +405,8 @@ Test project /home/racaljk/Desktop/glut_acm_practice/build
 
 Total Test time (real) =   0.19 sec
 ```
++ 深度优先搜索图形化显示(Windows only)
+    + `source: src/VISUAL_SEARCH`
+    + `license: MIT`
+    + `preview:`
+    ![dfs-gui](public/dfs.gif)
