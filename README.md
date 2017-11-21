@@ -322,7 +322,7 @@ Prerequisite:
 + cmake >= 3.5.0
 
 For linux:
-```python
+```shell
 $ git clone https://github.com/NagaseMinato/glut_acm_practice.git
 $ cd glut_acm_practice/build
 $ cmake .. -G"Unix Makefiles"
@@ -331,7 +331,7 @@ $ ../bin/solution1  # try to run a built program
 $ make clean
 ```
 There are more details about each programs in testsuites, you can run it to see more if you had been installed `valgrind` toolchain:
-```python
+```shell
 $ sudo apt-get install valgrind
 $ make test         # run testsuite
 ```
