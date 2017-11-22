@@ -9,6 +9,7 @@ set(SOURCE_FILES
         src/01pack_v1.0.cpp
         src/8queen.cpp
         src/poj3299_WA.cpp
+        src/poj_1003_48percentAC.cpp
         src/poj_1007_40percentAC.cpp
         src/poj_1590_33percentAC.cpp
         src/poj_2386_49percentAC.cpp

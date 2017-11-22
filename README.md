@@ -32,6 +32,9 @@
 12. 经典算法-01背包
 13. POJ分数加减法
 > 编写一个C程序，实现两个分数的加减法
+14. POJ水题 求调和级数
+> With two cards you can make the top card overhang the bottom one by half a card length, and the bottom one overhang the table by a third of a card length, for a total maximum overhang of 1/2 + 1/3 = 5/6 card lengths. In general you can make n cards overhang by 1/2 + 1/3 + 1/4 + ... + 1/(n + 1) card lengths, where the top card overhangs the second by 1/2, the second overhangs tha third by 1/3, the third overhangs the fourth by 1/4, etc., and the bottom card overhangs the table by 1/(n + 1). This is illustrated in the figure below.
+
 
 ## 2.需求分析
 1. 输入一串表达式，程序计算出表达式的结果
@@ -47,6 +50,7 @@
 11. 输入农夫和牛的一维坐标，从农夫位置开始广度优先搜索，向左向右或者两倍向左向右知道找到牛的位置，搜索结束
 12. 输入物品数量N，下面N-1为物品重量-价值对，输入背包大小，输出该背包能容纳的物品的最大价值
 13. 输入包含多行数据。每行数据是一个字符串，格式是"a/boc/d"。 。其中a, b, c, d是一个0-9的整数。o是运算符"+"或者"-"。数据以EOF结束 
+14. 输入一个浮点数，求解调和级数，直到总和大于输入的浮点数的N，最终按照格式输出
 
 ## 3.概要设计
 需要注意，以下并非真正意义的公有接口，只是为了说明程序设计概要而放诸此地
