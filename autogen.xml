@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<all>
+
+  <lab>
+    <topic>基础：基于栈的简易计算</topic>
+    <summary>一个算式的求值：求一个可能包含加、减、乘、除运算的中缀表达式的值。</summary>
+    <demand>输入一串表达式，程序计算出表达式的结果</demand>
+    <interface>
+        //@summary 表达式计算器构造函数，禁止编译器类型转换
+      //@param expr 待求值的表达式
+      //@return 无返回值
+      explicit ExprCalculator(const std::string &amp; expr);
+
+      //@summary 设置待求值的表达式
+      //@param expr 待求值的表达式
+      //@return ExprCalcuator 返回对象本身方便连贯调用
+      ExprCalculator &amp; setNewExpression(const std::string &amp; expr);
+
+      //@summary 计算表达式结果
+      //@param 无参数
+      //@return int 返回计算结果
+      int work();
+    </interface>
+    <detailDesign>使用两个栈分别存储数字和运算符，遇到左括号入栈，遇到运算符判断如果该运算符优先级大于栈顶则入栈，否则操作数出栈并与运算符一起参与计算，计算结果入栈。遇到右括号持续上述步骤直到栈顶元素为'('。 注意该程序不支持一位以上的数字计算以及负数计算</detailDesign>
+    <pseudocode>
+//@field expr_ 字符串表达式
+std::string expr_;
+//@field opcode 运算符栈，计算前默认'#'字符入栈
+std::stack&lt;char> opcode;
+//@field integer 数字栈，存放数字
+std::stack&lt;int> integer;
+
+for char in expressionStr:
+    if char in [0-9]:
+        push char into integer stack
+    else if char in [=-*/()]
+        r = getPrecedenceBetween(stackTop,char)
+        if(r)
+            push char into opcode stack
+        else
+            result = do calcuating
+            push result into integer
+    else if char == '('
+        push '(' into opcode stack
+    else
+        loop
+            pop integer and opcode stack
+            yield result from below
+            push result into stack
+        while opcode top !=')'
+    </pseudocode>
+    <programName>solution1</programName>
+  </lab>
+
+  <lab>
+    <topic>基础：约瑟夫环问题</topic>
+    <summary>2n个人围成一个圆圈，从第一个人开始依次循环报数，每数到第九个人就将他扔入大海，如此循环直到仅剩n个人为止 。问怎样的排法，才能使每次投入大海的都是非教徒。</summary>
+    <demand>输入一个数代表所有教徒的一半，程序求解所有教徒如何安排使得最终扔下海的是异教徒</demand>
+    <interface>
+      //@summary 循环链表构造函数，设置循环链表大小
+      //@param size 循环链表大小
+      //@return none
+      explicit List(size_t size);
+
+      //@summary 获取下一个未填充的位置
+      //@param none
+      //@return int 未填充的位置
+      int getNextTrue();
+
+      //@summary 进行下一轮的计算，得出待填充的位置
+      //@param none
+      //@return none
+      inline void nextRound();
+
+      //@summary 获取游标位置BAD DESIGN
+      //@param none
+      //@return int 返回游标位置
+      inline int getCursor();
+
+      //@summary 设置游标位置BAD DESIGN
+      //@param index 游标位置
+      //@return none
+      inline void setCursor(int index);
+    </interface>
+    <detailDesign>循环要抛到海里的人的次数，每次先求出游标位置，然后将至涂黑，游标移动至下一个未涂黑的位置，注意游标位置如果在末尾需要移动到头部</detailDesign>
+    <pseudocode>
+ //@method get next unfilled position index
+inline void next();
+//@field a circle list to simulate this problem
+std::vector&lt;int> list;
+//@field cursor usded to store current index
+size_t cursor;
+set dropCount = 0
+  while dropCount == required:
+      getNextRoundPosition
+      if current position is unfilled:
+          fill it!
+      else
+          getNextUnfilledPosition
+          fill it;
+      dropCount++
+    </pseudocode>
+    <programName>solution2</programName>
+  </lab>
+
+  <lab>
+    <topic>基础：找数字</topic>
+    <summary>先输入一个自然数n(n&lt;=1000),然后对此自然数按照如下方法进行处理: 1.不作任何处理;  2.在它的左边加上一个自然数,但该自然数不能超过原数最高位数字的一半; 3. 加上数后,继续按此规则进行处理,直到不能再加自然数为止.</summary>
+    <demand>输入第一行一个数t，表示有t组数据 之后每组数据占一行，每行一个数n.输出每组数据占一行，一个数，表示满足条件的数的个数</demand>
+    <interface>
+      //@summary No public APIs provided
+      //@param void none
+      //@return void none
+      static void NoneExportedAPI(void);</interface>
+    <detailDesign>先取首位数，然后放入队列。队列循环不为空做如下操作：取队首元素，队首出队，该元素循环到1然后入队，结束本次循环。</detailDesign>
+    <pseudocode>
+while (k / 10 != 0) {
+    k /= 10;
+}
+unhandle.push(k);
+while (!unhandle.empty()) {
+    int x = unhandle.front();
+    unhandle.pop();
+    for (int i = x / 2; i > 0; i--) {
+        handle++;
+        unhandle.push(i);
+    }
+}
+    </pseudocode>
+    <programName>solution3</programName>
+  </lab>
+
+  <lab>
+    <topic>基础/经典：贪心算法</topic>
+    <summary>用给定的几种钱币凑成某个钱数，一般而言有多种方式。例如：给定了6种钱币面值为2、5、10、20、50、100，用来凑 15元，可以用5个2元、1个5元，或者3个5元，或者1个5元、1个10元，等等。</summary>
+    <demand>输入钱币面值和数量，以及要求的总额，计算如何选择使得钱币数量最少即能达到要求的总额</demand>
+    <interface>
+      //@summary No public APIs provided
+      //@param void none
+      //@return void none
+      static void NoneExportedAPI(void);</interface>
+    <detailDesign>从最大的钱币开始循环到最小的钱币，判断如果该钱币乘以次数能满足要求则总额减去该值，同时一个变量存储钱币数量，如此循环直到结束，如果总额有剩余则输出"Impossible"否则输出钱币数量</detailDesign>
+    <pseudocode>
+    set count = 0
+    for maxValue to minValue:
+        if totalValue - maxValue * curCount >= 0
+            count += curCount;
+    </pseudocode>
+    <programName>solution4</programName>
+  </lab>
+
+  <lab>
+    <topic>基础：蛇形矩阵</topic>
+    <summary>蛇形矩阵是由1开始的自然数依次排列成的一个矩阵上三角形。</summary>
+    <demand>输入矩阵宽度，输出蛇形三角矩阵</demand>
+    <interface>
+      //@summary No public APIs provided
+      //@param void none
+      //@return void none
+      static void NoneExportedAPI(void);</interface>
+    <detailDesign>先创建矩阵宽度个数组，然后从小到大依次填充，最后O(N^2)内模拟N个数组的变形以实现题目要求的蛇形效果</detailDesign>
+    <pseudocode>
+ for x in range [0,N]:
+        arr = generate array(x+1)
+        store arr into matrix
+    for y in all matrix
+        temp  =0
+        loop
+            print y[temp++]
+        end
+    </pseudocode>
+    <programName>solution5</programName>
+    </lab>
+
+    <lab>
+    <topic>基础：字符7和7倍数输出</topic>
+    <summary>输出7 和7 的倍数，还有包含7 的数字例如（17，27，37...70，71，72，73...）</summary>
+    <demand>输入一个数字，输出从0开始到该数字中满足要求的数</demand>
+    <interface>
+      //@summary 判断[0,n]内符合要求的数字并输出
+      //@param n 区间上限
+      //@return none
+      void weirdPrint(int n)
+    </interface>
+    <detailDesign>从0开始循环到输入的数，1)数字对7求余如果为0则满足要求2)数字转化为字符串判断是否有"7"如果有则满足要求，如果上述两条不满足则不输出该数字</detailDesign>
+    <pseudocode>
+      //no pseudocode provided
+    </pseudocode>
+    <programName>solution6</programName>
+    </lab>
+
+      <lab>
+    <topic>基础：铺地板(DFS)问题</topic>
+    <summary>有一长度为N(1&lt;=Ｎ&lt;=10)的地板，给定两种不同瓷砖：一种长度为1，另一种长度为2，数目不限。要将这个长度为N的地板铺满，一共有多少种不同的铺法？编程用递归的方法求解上述问题。</summary>
+    <demand>输入N，使用两次递归计算即可</demand>
+    <interface>
+      //@function 递归求解解答总数，总数由全局变量保存
+      //@param int 待铺的长度
+      //@return none
+      void pave(int n)
+    </interface>
+    <detailDesign>全局变量存储解的数，pave()函数递归调用自身并，当恰好铺满N时全局变量加一，最终main函数输出结果</detailDesign>
+    <pseudocode>
+      //no pseudocode provided
+    </pseudocode>
+    <programName>solution8</programName>
+    </lab>
+
+  <lab>
+    <topic>经典：动态规划</topic>
+    <summary>0-1背包问题：若有物品n个，每个物品的价值Value，用vi表示，每个物品的重量weight用wi表示，其中vi和wi均为非负数。设背包的总容量为W，且W为非负数。现需要考虑的问题是：如何选择装入背包的物品，使装入背包的物品总价值最大。</summary>
+    <demand>输入钱币面值和数量，以及要求的总额，计算如何选择使得钱币数量最少即能达到要求的总额</demand>
+    <interface>
+      //@summary No public APIs provided
+      //@param void none
+      //@return void none
+      static void NoneExportedAPI(void);</interface>
+    <detailDesign>从背包最小额度开始，每次选择当前或者不选当前，计算最大收益，直到背包最大额度即为最优结果。</detailDesign>
+    <pseudocode>
+void dpSolution() {
+    for (int i = 1; i &lt;= n; i++) {
+        for (int k = 1; k &lt;= totalWeight; k++) {
+            if (weight[i] &lt;= k) {
+                dp[i][k] = std::max(dp[i - 1][k], dp[i - 1][k - weight[i]] + value[i]);
+            }
+            else {
+                dp[i][k] = dp[i - 1][k];
+            }
+        }
+    }
+}
+    </pseudocode>
+    <programName>01pack_v1.0</programName>
+    </lab>
+
+    <lab>
+    <topic>经典：八皇后</topic>
+    <summary>八皇后问题是一个古老而著名的问题，是回溯算法的典型例题。该问题是十九世纪著名的数学家高斯1850年提出：在8X8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。高斯认为有76种方案。1854年在柏林的象棋杂志上不同的作者发表了40种不同的解，后来有人用图论的方法解出92种结果</summary>
+    <demand>无输入，输出八皇后的所有解答</demand>
+    <interface>
+      //@summary 生成八皇后解
+      //@param i 当前解的行数，为8时得出一个解
+      //@return none
+      void genQueen(int i)</interface>
+    <detailDesign>数据量较小，使用递归依次计算八个皇后该摆放的位置（tempRow存放），函数体中循环8列，判断是否与之前摆放位置冲突，如果不冲突则存入tempRow，并递归调用。递归终结条件为最终8行位置全部摆放完毕。</detailDesign>
+    <pseudocode>
+      //no pseudocode provided
+    </pseudocode>
+    <programName>8queen</programName>
+    </lab>
+
+      <lab>
+    <topic>POJ：Hangover</topic>
+    <summary>How far can you make a stack of cards overhang a table? If you have one card, you can create a maximum overhang of half a card length. (We're assuming that the cards must be perpendicular to the table.) With two cards you can make the top card overhang the bottom one by half a card length, and the bottom one overhang the table by a third of a card length, for a total maximum overhang of 1/2 + 1/3 = 5/6 card lengths. In general you can make n cards overhang by 1/2 + 1/3 + 1/4 + ... + 1/(n + 1) card lengths, where the top card overhangs the second by 1/2, the second overhangs tha third by 1/3, the third overhangs the fourth by 1/4, etc., and the bottom card overhangs the table by 1/(n + 1). This is illustrated in the figure below.</summary>
+    <demand>输入一个浮点数，计算调和级数，直到大于等于输入的数字则输出。</demand>
+    <interface>
+      //@summary No public APIs provided
+      //@param void none
+      //@return void none
+      static void NoneExportedAPI(void);</interface>
+    <detailDesign>所有计算在main中进行。判断用户输入不为0.00时计算调和级数，直到调和级数和大于用户输入则输出</detailDesign>
+    <pseudocode>
+while (f != 0.00):
+  float sum = 0.0;
+  for (i = 2; sum &lt; f; i++) {
+      sum += (1.0 / i);
+  }
+  output sum
+  get user input</pseudocode>
+  <programName>poj_1003_48percentAC</programName>
+    </lab>
+
+        <lab>
+    <topic>POJ：DNA Sorting</topic>
+    <summary>One measure of ``unsortedness'' in a sequence is the number of pairs of entries that are out of order with respect to each other. For instance, in the letter sequence ``DAABEC'', this measure is 5, since D is greater than four letters to its right and E is greater than one letter to its right. This measure is called the number of inversions in the sequence. The sequence ``AACEDGG'' has only one inversion (E and D)---it is nearly sorted---while the sequence ``ZWQM'' has 6 inversions (it is as unsorted as can be---exactly the reverse of sorted). </summary>
+    <demand>输入N个M长度的DNA序列字符，输出从最无序到最有序的字符串，注意该序列是题目指定的inversion number排序</demand>
+    <interface>
+      //@summary 求解特殊的排序值
+      //@param str待排序的字符串
+      //@return int 特殊排序值
+      int inversionNumber(const std::string &amp; str)</interface>
+    <detailDesign>输入字符串，使用子过程计算特殊的排序结果（即inversion number sort），并与字符串本身一同存放至multimap（因为key可能重复，不能使用map），由于multimap是有序红黑树，最终迭代输出结果即可。</detailDesign>
+    <pseudocode>
+globalMap = {}//std::multimap
+
+userInput = getUserInput()
+while userInput != end :
+    sortedValue = inversionNumber(userInput)
+    store [input,sortedValue] into globalMap
+    userInput = getUserInput()
+
+for [key,value] in globalMap.items():
+    print key,",",value
+    </pseudocode>
+    <programName>poj_1007_40percentAC</programName>
+    </lab>
+
+    <lab>
+      <topic>POJ：Palindromes</topic>
+      <summary>A regular palindrome is a string of numbers or letters that is the same forward as backward. For example, the string "ABCDEDCBA" is a palindrome because it is the same when the string is read from left to right as when the string is read from right to left.A mirrored string is a string for which when each of the elements of the string is changed to its reverse (if it has a reverse) and the string is read backwards the result is the same as the original string. For example, the string "3AIAE" is a mirrored string because "A" and "I" are their own reverses, and "3" and "E" are each others' reverses.  </summary>
+      <demand>输入N个字符串，输出字符串是否为回文字符串;对字符串进行操作和根据题目进行计算</demand>
+      <interface>
+        //@summary No public APIs provided
+        //@param void none
+        //@return void none
+        static void NoneExportedAPI(void);</interface>
+      <detailDesign>回文字处理，使用硬编码直接将题目要求的回文数字/字符写入代码，方便后面计算；特殊天气计算按照题目描述计算即可，由于缺少其他情况，故程序不完全符合题目要求。</detailDesign>
+      <pseudocode>
+       //no pseudocode provided
+      </pseudocode>
+      <programName>poj_1590_33percentAC</programName>
+    </lab>
+
+    <lab>
+      <topic>POJ：Lake Counting</topic>
+      <summary> Due to recent rains, water has pooled in various places in Farmer John's field, which is represented by a rectangle of N x M (1 &lt;= N &lt;= 100; 1 &lt;= M &lt;= 100) squares. Each square contains either water ('W') or dry land ('.'). Farmer John would like to figure out how many ponds have formed in his field. A pond is a connected set of squares with water in them, where a square is considered adjacent to all eight of its neighbors.Given a diagram of Farmer John's field, determine how many ponds he has. </summary>
+      <demand>输入水塘矩阵，如果为'W'则深度搜索周围方块直到访问完周围所有'W'</demand>
+      <interface>
+      //@summary 深度优先搜索
+      //@param x,y 当前搜索的点
+      //@return none
+      void dfs(int x, int y);
+      </interface>
+      <detailDesign>循环水塘每个方格，只要遇上'W'就开始DFS,直到周围没有'W',DFS结束，回到主循环，计数器加一</detailDesign>
+      <pseudocode>
+void dfs(int x, int y) {
+    int pos[8][2] = { {0,1},{0,-1},{1,0},{-1,0},{1,1},{-1,-1},{1,-1},{-1,1} };
+    for (int i = 0; i &lt; 8; i++) {
+        int nx = x + pos[i][0];
+        int ny = y + pos[i][1];
+        if (nx &lt; 0 || ny &lt; 0 || nx >= n || ny >= m) {
+        	continue;
+        }
+        if (field[nx][ny] == 'W') {
+            field[nx][ny] = '.';
+            dfs(nx,ny);
+        }
+    }
+}
+      </pseudocode>
+      <programName>poj_2538_47percentAC</programName>
+    </lab>
+
+              <lab>
+    <topic>POJ：分数加减法</topic>
+    <summary>编写一个C程序，实现两个分数的加减法</summary>
+    <demand>输入包含多行数据。每行数据是一个字符串，格式是"a/boc/d"。 。其中a, b, c, d是一个0-9的整数。o是运算符"+"或者"-"。数据以EOF结束</demand>
+    <interface>
+    // @summary 计算 a op b
+    // @param int a
+    // @param int b
+    // @return int 返回a op b
+    int doComputing(int a, int b, char op);
+
+    // @summary 给出两个数，寻找这两个数的最大公因数
+    // @param int a 数A
+    // @param int b 数B
+    // @return int A和B的最大公因数
+    int findGreatestCommonFactor(int a, int b);
+
+    // @summary 将分数转化为以最大公因数为底的分数形式
+    // @param int a 分子
+    // @param int b 分母
+    // @param int greatestCommonFactor 最大公因数
+    // @return pair&lt;int,int> 以最大公因数为底的分数
+    std::pair&lt;int, int> transformFraction(int a, int b, int greastestCommonFactor);
+
+    // @summary 返回a/b化简后的记过
+    // @param int 分子
+    // @param int 分母
+    // @return pair&lt;int,int> 化简后的a/b
+    std::pair&lt;int,int> simplifyFraction(int a, int b);
+    </interface>
+    <detailDesign>循环读取用户输入，直到EOF停止。首先使用parseNumberFrom()函数解析字符串，然后使用transformFraction()转化为pair对表示分数，最后simplifyFraction()化简分数计算后的最终结果。该题主要复杂度（代码）体现在parseNUmberFrom()</detailDesign>
+    <pseudocode>
+while !cin.eof():
+    numbers[] = parseNumberFrom(UserInput)
+    fraction1 = transform(numbers1,numbers2)
+    fraction2 = transform(numbers3,numbers4)
+    resultFraction = fraction1 ['+'|'-'] fraction2
+
+    if(resultFraction&lt;0){
+        print '-'.result.'\n'
+    }else if(resultFraction>0){
+        print result.'\n'
+    }else{
+        print '0'.'\n'
+    }
+    </pseudocode>
+    <programName>poj_3979_30percentAC</programName>
+    </lab>
+
+                <lab>
+    <topic>POJ：Catch That Cow</topic>
+    <summary> Farmer John has been informed of the location of a fugitive cow and wants to catch her immediately. He starts at a point N (0 ≤ N ≤ 100,000) on a number line and the cow is at a point K (0 ≤ K ≤ 100,000) on the same number line. Farmer John has two modes of transportation: walking and teleporting.* Walking: FJ can move from any point X to the points X - 1 or X + 1 in a single minute* Teleporting: FJ can move from any point X to the point 2 × X in a single minute.If the cow, unaware of its pursuit, does not move at all, how long does it take for Farmer John to retrieve it?</summary>
+    <demand>输入农夫和牛的一维坐标，从农夫位置开始广度优先搜索，向左向右或者两倍向左向右知道找到牛的位置，搜索结束</demand>
+    <interface>
+      //@summary 广度优先搜索
+      //@param n,k n为农夫的位置，k为牛的位置
+      //@return int 返回农夫到牛需要走的步数
+      int bfs(int n,int k);
+    </interface>
+    <detailDesign>主函数接受农夫和牛的一维坐标输入，bfs()函数首先创建队列并将农夫位置放入队列，然后四种走法逐一判读如果到达牛的位置在则终止搜索，返回</detailDesign>
+    <pseudocode>
+ queue&lt;position,step> q;
+    res = 0
+    while !q.empty():
+        front = q.pop();
+        if front == cow position:
+            res = front.step
+            break
+
+        if front.position +1 not visited
+            set to visited
+            q.push(front.position+1,front.step+1)
+        if front.position -1 not visited
+            set to visited
+            q.push(front.position+1,front.step+1)
+        if front.position *2 not visited
+            set to visited
+            q.push(front.position+1,front.step+1)
+
+    return res
+    </pseudocode>
+    <programName>poj_3278_31percentAC</programName>
+    </lab>
+</all>
